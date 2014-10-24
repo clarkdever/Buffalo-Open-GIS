@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Buffalo Open GIS is a system developed to help individuals and community organizations map their data enabling positive impacts on the city of Buffalo.">
     <meta name="author" content="Clark Dever, Nick Gianadda - AlgonquinStudios.com">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
     <title> Buffalo Open GIS</title>
@@ -19,12 +21,12 @@
 
 
 
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
-  <script src="assets/js/libs/jquery.min.js"></script>
+
 	<script type="text/javascript" src="assets/js/libs/modernizr.custom.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.js"></script>
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -33,7 +35,7 @@
     <![endif]-->
   </head>
 
-  <body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+  <body data-spy="scroll" data-offset="0" data-target="#navbar-main" ng-app="bogisApp">
 
 
   	<div id="navbar-main">
@@ -53,6 +55,8 @@
 			<li> <a href="#maps" class="smoothScroll"> Maps</a></li>
 			<li> <a href="#team" class="smoothScroll"> Team</a></li>
 			<li> <a href="#contact" class="smoothScroll"> Contact</a></li>
+      <li> <a ng-hide-auth="" href="#/login" class="smoothScroll">log in</a></li>
+      <li> <a ng-show-auth="" href="#/account" class="smoothScroll">account</a></li>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -102,11 +106,11 @@
 				<hr>
 
 				<div class="col-lg-6">
-					<p>Buffalo Open GIS is a system developed to help individuals and community organizations map their data enabling positive impacts on the city of Buffalo. When we looked at the data sets provided by organizations for the <a href="http://attwny.hackupstate.com/" target="_blank">WNY Civic App Challenge</a> we saw a common need for groups.  The NGOs had spreadsheets full of addresses and latitudes/longitudes, but they didn't have a good way to create, update, and share, that data with other citizens. Building this tool gave us a chance to stretch our abilities and try out some new development tools.</p>
+					<p>Buffalo Open GIS is a system developed to help individuals and community organizations map their data enabling positive impacts on the city of Buffalo. When we looked at the data sets provided by organizations for the <a href="https://attwny.hackupstate.com/" target="_blank">WNY Civic App Challenge</a> we saw a common need for groups.  The NGOs had spreadsheets full of addresses and latitudes/longitudes, but they didn't have a good way to create, update, and share, that data with other citizens. Building this tool gave us a chance to stretch our abilities and try out some new development tools.</p>
 				</div><!-- col-lg-6 -->
 
 				<div class="col-lg-6">
-					<p>Algonquin Studios believes strongly in giving time and other resources to the Western New York community, especially the City of Buffalo and some of its underserved neighborhoods. If you enjoy this application and plan to use it, please consider supporting another program we operate: <a href="http://algonquinstudios.com/Engage/Community-Initiatives/BuffaloSoccerClub" target="_blank">Algonquin Sports for Kids: Buffalo Soccer Club</a>. A youth soccer program based on the concepts of healthy choices, personal responsibility, and respect for self and others.</p>
+					<p>Algonquin Studios believes strongly in giving time and other resources to the Western New York community, especially the City of Buffalo and some of its underserved neighborhoods. If you enjoy this application and plan to use it, please consider supporting another program we operate: <a href="https://algonquinstudios.com/Engage/Community-Initiatives/BuffaloSoccerClub" target="_blank">Algonquin Sports for Kids: Buffalo Soccer Club</a>. A youth soccer program based on the concepts of healthy choices, personal responsibility, and respect for self and others.</p>
 				</div><!-- col-lg-6 -->
 			</div><!-- row -->
 		</div><!-- container -->
@@ -256,8 +260,8 @@
 					<img class="img img-circle" src="assets/img/team/team01.jpg" alt="Clark Dever" height="120px" width="120px" alt="">
 					<br>
 					<h4><b>Clark Dever</b></h4>
-					<a href="http://www.twitter.com/clarkdever" class="icon icon-twitter"></a>
-					<a href="http://www.facebook.com/clarkdever" class="icon icon-facebook"></a>
+					<a href="https://www.twitter.com/clarkdever" class="icon icon-twitter"></a>
+					<a href="https://www.facebook.com/clarkdever" class="icon icon-facebook"></a>
 					<p>Hacker, Maker, Community Organizer, above all else --<br />Buffalonian.</p>
 				</div><!-- col-lg-2 -->
 
@@ -320,7 +324,7 @@
 				<br>
 				<div class="col-lg-4">
 					<h3>Contact Information</h3>
-					<p><span class="icon icon-home"></span> <a href="http://www.algonquinstudios.com">Algonquin Studios</a><br/>
+					<p><span class="icon icon-home"></span> <a href="https://www.algonquinstudios.com">Algonquin Studios</a><br/>
 						<span class="icon icon-phone"></span> 716-842-1439 <br/>
 						<span class="icon icon-envelop"></span> <a href="mailto:info@algonquinstudios.com">info@algonquinstudios.com</a> <br/>
 						<span class="icon icon-twitter"></span> <a href="https://twitter.com/ASBuffalo">@ASBuffalo</a> <br/>
@@ -366,7 +370,7 @@
 		<div id="footerwrap">
 			<div class="container">
         <div class="pull-left">
-				<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Buffalo Open GIS</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.algonquinstudios.com" property="cc:attributionName" rel="cc:attributionURL">Algonquin Studios</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> <span xmlns:dct="https://purl.org/dc/terms/" property="dct:title">Buffalo Open GIS</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://www.algonquinstudios.com" property="cc:attributionName" rel="cc:attributionURL">Algonquin Studios</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
         </div>
 			</div>
 		</div>
@@ -375,12 +379,59 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-
+  <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
 	<script type="text/javascript" src="assets/js/libs/bootstrap.min.js"></script>
 	<script type="text/javascript" src="assets/js/libs/retina.js"></script>
 	<script type="text/javascript" src="assets/js/libs/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="assets/js/libs/smoothscroll.js"></script>
+  <script type="text/javascript" src="assets/js/libs/smoothscroll.js"></script>
 	<script type="text/javascript" src="assets/js/libs/jquery-func.js"></script>
-  <!-- script type="text/javascript" src="assets/js/app/scripts.js"></script -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular-sanitize.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular-animate.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular-cookies.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular-resource.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.0/angular-touch.js"></script>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.js"></script>
+
+
+  <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+  <script src="https://cdn.firebase.com/js/simple-login/1.6.4/firebase-simple-login.js"></script>
+
+
+  <!-- endbower -->
+  <!-- endbuild -->
+
+      <!-- build:js({.tmp,app}) scripts/scripts.js -->
+      <script src="assets/js/ng/app.js"></script>
+      <script src="assets/js/ng/controllers/main.js"></script>
+      <script src="assets/js/ng/angularfire/config.js"></script>
+      <script src="assets/js/ng/angularfire/firebase.utils.js"></script>
+      <script src="assets/js/ng/controllers/chat.js"></script>
+      <script src="assets/js/ng/filters/reverse.js"></script>
+      <script src="assets/js/ng/angularfire/simpleLogin.js"></script>
+      <script src="assets/js/ng/controllers/login.js"></script>
+      <script src="assets/js/ng/controllers/account.js"></script>
+      <script src="assets/js/ng/directives/ngShowAuth.js"></script>
+      <script src="assets/js/ng/directives/ngHideAuth.js"></script>
+      <script src="assets/js/ng/routes.js"></script>
+      <!-- endbuild -->
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-7892607-7', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+  </script>
   </body>
 </html>
