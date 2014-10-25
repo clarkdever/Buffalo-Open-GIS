@@ -644,3 +644,9 @@ a:after {
 		line-height: 38px;
 	}
 }
+
+
+/*Leaflet CSS*/
+#map { 
+    height: 180px; 
+}
