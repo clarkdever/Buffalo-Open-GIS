@@ -8,7 +8,7 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('MapCtrl', function ([ "$scope","$filter", "$firebase", function($scope, $filter, $firebase) ) {
+  .controller('MapCtrl', [ "$scope","$filter", "$firebase", function($scope, $filter, $firebase)  {
   	console.log("MapCtrl");
     //Setup the token
     L.mapbox.accessToken = 'pk.eyJ1IjoiZ2lhbmFkZGEiLCJhIjoiRzRHV05uTSJ9.7BDOS7nCZCVrXSfemvzaFQ';
