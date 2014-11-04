@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name bogisApp.controller:MainCtrl
+ * @name bogisApp.controller:MapCtrl
  * @description
- * # MainCtrl
+ * # MapCtrl
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
