@@ -10,8 +10,10 @@ angular.module('bogisApp')
   .controller('LoginCtrl', function ($scope, simpleLogin, $location) {
 
     console.log("LoginCtrl");
-    $scope.oauthlogin = function(provider) {
+    $scope.oauthlogin = function(provider,email, pass) {
       login(provider, {
+        email: email,
+        password: pass,
         rememberMe: true
       });
     };
