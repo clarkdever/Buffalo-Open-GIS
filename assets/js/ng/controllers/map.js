@@ -128,4 +128,4 @@ angular.module('bogisApp')
       };
 
 
-  });
+  }]);
