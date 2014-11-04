@@ -1,4 +1,4 @@
- var app = angular.module("demoapp", ["leaflet-directive", "firebase"]);
+var app = angular.module("demoapp", ["leaflet-directive", "firebase"]);
 app.controller("DemoController", [ "$scope", "leafletEvents", "$firebase", function($scope, leafletEvents, $firebase) {
 
   var ref = new Firebase("https://BabyGorilla.firebaseio.com/" + "BOGISMarkers");
@@ -13,7 +13,7 @@ app.controller("DemoController", [ "$scope", "leafletEvents", "$firebase", funct
   });
 
 }]);
-  
+
 // a factory to create a re-usable Profile object
 // we pass in a username and get back their synchronized data as an object
 app.factory("BOGISMarkers", ["$firebase", function($firebase) {
@@ -30,22 +30,22 @@ app.factory("BOGISMarkers", ["$firebase", function($firebase) {
   }
 }]);
 
-app.controller("uploadControler", [ "$scope","$filter", "$firebase", "BOGISMarkers", function($scope, $filter, $firebase, BOGISMarkers) {
+app.controller("uploadController", [ "$scope","$filter", "$firebase", "BOGISMarkers", function($scope, $filter, $firebase, BOGISMarkers) {
 
   //Setup the token
-  L.mapbox.accessToken = 'pk.eyJ1IjoiZ2lhbmFkZGEiLCJhIjoiRzRHV05uTSJ9.7BDOS7nCZCVrXSfemvzaFQ'; 
+  L.mapbox.accessToken = 'pk.eyJ1IjoiZ2lhbmFkZGEiLCJhIjoiRzRHV05uTSJ9.7BDOS7nCZCVrXSfemvzaFQ';
 
 
 
   //Create the map
   var map = L.mapbox.map('map', 'gianadda.k2gfi54f').setView([0, 0], 1);
   var geocoder = L.mapbox.geocoder('mapbox.places-v1');
-  
+
   //Add a layer that we will add our markers to later
   var dataLayer = L.mapbox.featureLayer().addTo(map);
-  
+
   //Scope function to load data
-  $scope.LoadData = function () { 
+  $scope.LoadData = function () {
     var ref = new Firebase("https://BabyGorilla.firebaseio.com/" + "BOGISMarkers");
     $scope.data =  $firebase(ref).$asArray();
     $scope.data.$loaded(function() {
@@ -53,10 +53,10 @@ app.controller("uploadControler", [ "$scope","$filter", "$firebase", "BOGISMarke
       dataToMarkers();
     });
    };
-  
+
   $scope.LoadData();
 
-  $scope.saveTable = function () { 
+  $scope.saveTable = function () {
        angular.forEach($scope.data, function(dataElement) {
          if (typeof(dataElement.address) !== "undefined"){
           if (typeof(dataElement.lat) == "undefined" || typeof(dataElement.lng) == "undefined") {
@@ -64,23 +64,23 @@ app.controller("uploadControler", [ "$scope","$filter", "$firebase", "BOGISMarke
                   dataElement.lat = data.latlng[0];
                   dataElement.lng = data.latlng[1];
                   if (dataElement.$id == null) {
-                    $scope.data.$add(dataElement);   
+                    $scope.data.$add(dataElement);
                   } else {
                     $scope.data.$save(dataElement);
                   }
               });
           } else {
             if (dataElement.$id == null) {
-              $scope.data.$add(dataElement);   
+              $scope.data.$add(dataElement);
             } else {
               $scope.data.$save(dataElement);
             }
-            
+
           }
-            
+
         } else {
           if (dataElement.$id == null) {
-            $scope.data.$add(dataElement);   
+            $scope.data.$add(dataElement);
           } else {
             $scope.data.$save(dataElement);
           }
@@ -89,11 +89,11 @@ app.controller("uploadControler", [ "$scope","$filter", "$firebase", "BOGISMarke
       });
       //setTimeout(500,$scope.LoadData());
    };
-  
- 
-  
+
+
+
   function dataToMarkers() {
-    
+
         $("#table").handsontable({
           data: $scope.data,
           startRows: 7,
@@ -125,7 +125,7 @@ app.controller("uploadControler", [ "$scope","$filter", "$firebase", "BOGISMarke
           // Everytime the table is changed, update the markers on the map.
           //afterChange: stuffChanges
         });
-    
+
        // Create a new geojson object that'll represent the table values.
       var geojson = { type: 'FeatureCollection', features: [] };
       // For each table row, create a marker.
@@ -143,7 +143,7 @@ app.controller("uploadControler", [ "$scope","$filter", "$firebase", "BOGISMarke
               'marker-color': "#ff0000",
               'title': $scope.data[i].name + '<br/>' + $scope.data[i].message
             }
-          });          
+          });
         }
       }
       dataLayer.setGeoJSON(geojson);
