@@ -318,6 +318,7 @@ a:after {
 	background: #f5f5f5;
 	margin-top: 0px;
 	padding-top: 40px;
+  padding-bottom: 10px;
 	border-bottom: 1px solid #ddd;
 	text-align: center;
 }
