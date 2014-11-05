@@ -60,8 +60,16 @@
         			<li> <a href="/#maps" class="smoothScroll"> Maps</a></li>
         			<li> <a href="/#team" class="smoothScroll"> Team</a></li>
         			<li> <a href="#contact" class="smoothScroll"> Contact</a></li>
-              <li> <a ng-hide-auth="" href="#/login" class="smoothScroll">Log in</a></li>
-              <li> <a ng-show-auth="" href="#/account" class="smoothScroll">Account</a>
+              <li class="ng-cloak"> <a ng-hide-auth="" href="#/login" class="smoothScroll">Log in</a></li>
+              <li class="dropdown ng-cloak">
+                <a ng-show-auth="" class="dropdown-toggle ng-cloak" data-toggle="dropdown">Account <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#/account">Settings</a></li>
+                  <li class="divider"></li>
+                  <li><a href="" ng-click="logout();">Log Out</a></li><!--TODO: Make this work -->
+                </ul>
+              </li>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -184,6 +192,8 @@
       <script src="assets/js/ng/controllers/login.js"></script>
       <script src="assets/js/ng/controllers/account.js"></script>
       <script src="assets/js/ng/controllers/map.js"></script>
+      <script src="assets/js/ng/controllers/edit.js"></script>
+      <script src="assets/js/ng/controllers/profile.js"></script>
       <script src="assets/js/ng/directives/ngShowAuth.js"></script>
       <script src="assets/js/ng/directives/ngHideAuth.js"></script>
 
