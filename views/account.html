@@ -1,70 +1,94 @@
-<div id="greywrap">
-  <div class="row">
+<div class="col-md-16">
     <h2>Account</h2>
 
-    <form>
+    <form class="form-horizontal">
         <fieldset>
             <legend>Profile</legend>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="name">Name:</label>
+              <div class="col-xs-4">
+              <input id="name" name="name" type="text" ng-model="profile.name" placeholder="No Data Loaded" class="form-control input-normal">
+              <span class="help-block"></span>
+              </div>
+            </div>
 
-            <label>
-                <span>Name:</span>
-                <input type="text" name="name" ng-model="profile.name"/>
-            </label>
-
-            <label>
-                <span>Email:</span>
-                <br />{{profile.email}}
-            </label>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="email">E-mail:</label>
+              <div class="col-xs-4">
+              <input id="email" name="email" type="text" ng-model="profile.email" placeholder="No Data Loaded" class="form-control input-md" disabled="">
+              <span class="help-block"></span>
+              </div>
+            </div>
         </fieldset>
     </form>
 
-    <form>
+    <form class="form-horizontal">
         <fieldset>
             <legend>Change Password</legend>
 
-            <label>
-                <span>Old Password:</span>
-                <input type="password" ng-keypress="clear()" ng-model="oldpass"/>
-            </label>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="oldPassword">Old Password:</label>
+              <div class="col-xs-4">
+              <input id="oldPassword" name="oldPassword" type="password" ng-keypress="clear()" ng-model="oldpass" placeholder="Enter Password" class="form-control input-normal">
+              <span class="help-block"></span>
+              </div>
+            </div>
 
-            <label>
-                <span>New Password:</span>
-                <input type="password" ng-keypress="clear()" ng-model="newpass"/>
-            </label>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="newPassword">New Password:</label>
+              <div class="col-xs-4">
+              <input id="newPassword" name="newPassword" type="password" ng-keypress="clear()" ng-model="newpass" placeholder="Enter Password" class="form-control input-normal">
+              <span class="help-block"></span>
+              </div>
+            </div>
 
-            <label>
-                <span>Confirm New Password:</span>
-                <input type="password" ng-keypress="clear()" ng-model="confirm"/>
-            </label>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="confirmPassword">Confirm New Password:</label>
+              <div class="col-xs-4">
+              <input id="confirmPassword" name="confirmPassword" type="password" ng-keypress="clear()" ng-model="confirm" placeholder="Enter Password" class="form-control input-normal">
+              <span class="help-block"></span>
+              </div>
+            </div>
 
-            <button ng-click="changePassword(oldpass, newpass, confirm)">change password</button>
+            <div class="col-xs-7">
+              <button class="btn btn-success pull-right" ng-click="changePassword(oldpass, newpass, confirm)">Change Password</button>
+            </div>
 
             <p class="error" ng-show="err">{{err}}</p>
             <p class="good" ng-show="msg">{{msg}}</p>
+
         </fieldset>
     </form>
 
-    <form>
+    <form class="form-horizontal">
         <fieldset>
             <legend>Change Email</legend>
 
-            <label>
-                <span>New Email:</span>
-                <input type="text" ng-keypress="clear()" ng-model="newEmail"/>
-            </label>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="newEmail">New Email:</label>
+              <div class="col-xs-4">
+              <input id="newEmail" name="newEmail" type="text" ng-keypress="clear()" ng-model="newEmail" placeholder="Enter E-mail" class="form-control input-normal">
+              <span class="help-block"></span>
+              </div>
+            </div>
 
-            <label>
-                <span>Password:</span>
-                <input type="password" ng-keypress="clear()" ng-model="pass"/>
-            </label>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="Password">Password:</label>
+              <div class="col-xs-4">
+              <input id="Password" name="Password" type="password" ng-keypress="clear()" ng-model="pass" placeholder="Enter Password" class="form-control input-normal">
+              <span class="help-block"></span>
+              </div>
+            </div>
 
-            <button ng-click="changeEmail(pass, newEmail)">update email</button>
+            <div class="col-xs-7">
+              <button class="btn btn-success pull-right"  ng-click="changeEmail(pass, newEmail)">Update Email</button><br />
+            </div>
 
             <p class="error" ng-show="emailerr">{{emailerr}}</p>
             <p class="good" ng-show="emailmsg">{{emailmsg}}</p>
         </fieldset>
     </form>
-
-    <button ng-click="logout()">Log Out</button>
-  </div>
+    <div class="col-xs-7">
+      <button class="btn btn-danger pull-left"  ng-click="logout()">Log Out</button>
+    </div>
 </div>
