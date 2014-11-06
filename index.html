@@ -70,7 +70,7 @@
               <li class="ng-cloak"> <a ng-hide-auth="" href="#/login" class="smoothScroll">Log in</a></li>
               <li class="dropdown ng-cloak">
                 <a ng-show-auth="" class="dropdown-toggle ng-cloak" data-toggle="dropdown">Account <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
+                <ul class="dropdown-menu" role="menu" ng-controller="MainCtrl">
                   <li><a href="#/account">Settings</a></li>
                   <li class="divider"></li>
                   <li><a href="" ng-click="logout();">Log Out</a></li><!--TODO: Make this work -->
@@ -176,6 +176,7 @@
       <script src="assets/js/ng/controllers/account.js"></script>
       <script src="assets/js/ng/controllers/map.js"></script>
       <script src="assets/js/ng/controllers/edit.js"></script>
+      <script src="assets/js/ng/controllers/allmaps.js"></script>
       <script src="assets/js/ng/controllers/profile.js"></script>
       <script src="assets/js/ng/directives/ngShowAuth.js"></script>
       <script src="assets/js/ng/directives/ngHideAuth.js"></script>

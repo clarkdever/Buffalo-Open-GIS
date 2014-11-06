@@ -26,7 +26,7 @@ angular.module('bogisApp')
 
 
       //Scope function to load data
-      $scope.LoadData = function () {
+      $scope.LoadData = function ()  {
         var ref = new Firebase(FBURL + "/users/" + $routeParams.userName + "/maps/" + $routeParams.mapId);
         $scope.data =  $firebase(ref).$asArray();
         $scope.data.$loaded(function() {
@@ -71,7 +71,7 @@ angular.module('bogisApp')
         //Desc
         htmlString = htmlString + '<h2>' + data.name + '</h2>'
         
-        if (data.URL != '') {
+        if (typeof(data.URL) !== "undefined") {
             htmlString = htmlString + '<a href="' + data.URL + '" target="_blank" title="' + data.name + '">' + data.URL  +'</a>'
         }
         

@@ -84,6 +84,12 @@ angular.module('bogisApp')
         controller: "MapCtrl"
       })
 
+      .when('/allmaps',
+      {
+        templateUrl: "views/allmaps.html",
+        controller: "AllMapCtrl"
+      })
+    
       .whenAuthenticated('/account', {
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'

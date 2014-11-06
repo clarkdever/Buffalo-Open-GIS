@@ -10,5 +10,8 @@
 angular.module('bogisApp')
   .controller('MainCtrl', function ($scope, simpleLogin) {
   	console.log("MainCtrl");
-    $scope.logout = simpleLogin.logout;
+    $scope.logout = function() { 
+        
+        simpleLogin.logout();
+    };
   });
