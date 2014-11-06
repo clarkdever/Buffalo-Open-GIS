@@ -8,10 +8,10 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('MapCtrl',  [ '$scope','$filter', '$firebase', 'FBURL', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase, FBURL, MBAccessToken, $routeParams)  {
+  .controller('MapCtrl',  [ '$scope','$filter', '$firebase',  'FBURL', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase,  FBURL, MBAccessToken, $routeParams)  {
   	console.log("MapCtrl");
 
-    $scope.route = { mapId: $routeParams.mapGuid };
+    $scope.route = { mapId: $routeParams.mapId, userId: $routeParams.userName };
 
 
     //Setup the token
@@ -27,7 +27,7 @@ angular.module('bogisApp')
 
       //Scope function to load data
       $scope.LoadData = function () {
-        var ref = new Firebase(FBURL + "/BOGISMarkers");
+        var ref = new Firebase(FBURL + "/users/" + $routeParams.userName + "/maps/" + $routeParams.mapId);
         $scope.data =  $firebase(ref).$asArray();
         $scope.data.$loaded(function() {
           console.log('loaded', $scope.data);
@@ -53,7 +53,7 @@ angular.module('bogisApp')
                   coordinates: [ $scope.data[i].lng, $scope.data[i].lat]
                 },
                 properties: {
-                  'marker-size': $scope.data[i].size,
+                  'marker-size': $scope.data[i].size.toLowerCase(),
                   'marker-color': ConvertColorNameToHex($scope.data[i].color),
                   'title': CreateToolTipPopup($scope.data[i])
                 }

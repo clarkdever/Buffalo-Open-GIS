@@ -67,7 +67,7 @@ angular.module('bogisApp')
         controller: 'LoginCtrl'
       })
 
-      .whenAuthenticated('/edit/:mapGuid', {
+      .whenAuthenticated('/edit/:mapId', {
         templateUrl: 'views/edit.html',
         controller: 'EditCtrl'
       })

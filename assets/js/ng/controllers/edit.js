@@ -8,10 +8,10 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'FBURL', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase, FBURL, MBAccessToken, $routeParams)  {
+  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'user', 'FBURL', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase, user, FBURL, MBAccessToken, $routeParams)  {
   	console.log("EditCtrl");
 
-    $scope.route = { userName: $routeParams.userName, mapId: $routeParams.mapId };
+    $scope.route = { mapId: $routeParams.mapId };
 
 
 
@@ -41,7 +41,7 @@ angular.module('bogisApp')
       
       //Scope function to load data
       $scope.LoadData = function () {
-        var ref = new Firebase(FBURL + "/BOGISMarkers");
+        var ref = new Firebase(FBURL + "/users/" + user.uid + "/maps/" + $scope.route.mapId);
         $scope.data =  $firebase(ref).$asArray();
         $scope.data.$loaded(function() {
           console.log('loaded', $scope.data);
