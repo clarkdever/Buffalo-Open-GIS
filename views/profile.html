@@ -72,7 +72,16 @@
                         <td>Website</td>
                         <td><a  target="_blank" href="{{viewUserProfile.website}}">{{viewUserProfile.website}}</a></td>
                       </tr>
-                     
+                      <tr>
+                        <td>Maps</td>
+                        <td>
+                            <ul>
+                                <li ng-repeat="(mapname, map) in viewUserProfile.maps">
+                                    <a href="/index.html#/map/{{viewUserProfile.$id}}/{{mapname}}">{{mapname}}</a></td>  
+                                </li>
+                            </ul>
+                            
+                      </tr>
                     </tbody>
                   </table>
                   
