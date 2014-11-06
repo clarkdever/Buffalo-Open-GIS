@@ -11,11 +11,38 @@
               <span class="help-block"></span>
               </div>
             </div>
-
             <div class="form-group">
               <label class="col-xs-3 control-label" for="email">E-mail:</label>
               <div class="col-xs-4">
               <input id="email" name="email" type="text" ng-model="profile.email" placeholder="No Data Loaded" class="form-control input-md" disabled="">
+              <span class="help-block"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="description">Description:</label>
+              <div class="col-xs-4">
+              <textarea id="description" name="description" type="text" ng-model="profile.description" placeholder="No Data Loaded" class="form-control input-md"/>
+              <span class="help-block"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="address">Address:</label>
+              <div class="col-xs-4">
+              <textarea id="address" name="address" type="text" ng-model="profile.address" placeholder="No Data Loaded" class="form-control input-md"/>
+              <span class="help-block"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="phone">Phone:</label>
+              <div class="col-xs-4">
+              <input id="phone" name="phone" type="text" ng-model="profile.phone" placeholder="No Data Loaded" class="form-control input-md">
+              <span class="help-block"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-xs-3 control-label" for="">Website:</label>
+              <div class="col-xs-4">
+              <input id="website" name="website" type="text" ng-model="profile.website" placeholder="No Data Loaded" class="form-control input-md">
               <span class="help-block"></span>
               </div>
             </div>
@@ -88,6 +115,9 @@
             <p class="good" ng-show="emailmsg">{{emailmsg}}</p>
         </fieldset>
     </form>
+    
+    
+    
     <div class="col-xs-7">
       <button class="btn btn-danger pull-left"  ng-click="logout()">Log Out</button>
     </div>

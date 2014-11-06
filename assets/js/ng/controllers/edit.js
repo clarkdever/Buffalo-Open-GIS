@@ -8,25 +8,40 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('EditCtrl', [ "$scope","$filter", "$firebase", "$routeParams", function($scope, $filter, $firebase, $routeParams)  {
+  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'FBURL', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase, FBURL, MBAccessToken, $routeParams)  {
   	console.log("EditCtrl");
 
     $scope.route = { userName: $routeParams.userName, mapId: $routeParams.mapId };
 
-    //Setup the token
-    L.mapbox.accessToken = 'pk.eyJ1IjoiZ2lhbmFkZGEiLCJhIjoiRzRHV05uTSJ9.7BDOS7nCZCVrXSfemvzaFQ';
 
-    //Create the map
-    var map = L.mapbox.map('map', 'gianadda.k2gfi54f').setView([0, 0], 1);
+
+    //Setup the token
+    L.mapbox.accessToken = MBAccessToken;
+
     var geocoder = L.mapbox.geocoder('mapbox.places-v1');
 
-    //Add a layer that we will add our markers to later
-    var dataLayer = L.mapbox.featureLayer().addTo(map);
+    var maxed = false
+      , resizeTimeout
+      , availableWidth
+      , availableHeight
+      , $window = $(window)
+      , $table = $('#table');
 
-
+    var calculateSize = function () {
+      if(maxed) {
+        var offset = $example1.offset();
+        availableWidth = $window.width() - offset.left + $window.scrollLeft();
+        availableHeight = $window.height() - offset.top + $window.scrollTop();
+        $table.width(availableWidth).height(availableHeight);
+      }
+      $table.handsontable('render');
+    };
+    $window.on('resize', calculateSize);
+    calculateSize();      
+      
       //Scope function to load data
       $scope.LoadData = function () {
-        var ref = new Firebase("https://BabyGorilla.firebaseio.com/" + "BOGISMarkers");
+        var ref = new Firebase(FBURL + "/BOGISMarkers");
         $scope.data =  $firebase(ref).$asArray();
         $scope.data.$loaded(function() {
           console.log('loaded', $scope.data);
@@ -74,20 +89,21 @@ angular.module('bogisApp')
 
       function dataToMarkers() {
 
-            $("#table").handsontable({
+            $table.handsontable({
               data: $scope.data,
               startRows: 7,
               startCols: 4,
-              colHeaders: ['Lon', 'Lat', 'Name', 'Comment', 'Address',  'Size', 'Color'],
+              fixedColumnsLeft: 2,
+              colHeaders: [ 'Latitude', 'Longitude', 'Name', 'Comment', 'Address',  'Size', 'Color', 'URL', 'Filter 1', 'Filter 2', 'Filter 3'],
               columnSorting: true,
               columns: [
                 {
-                  data: 'lng',
+                  data: 'lat',
                   type: 'numeric',
                   format: '0.00000',
                 },
                 {
-                  data: 'lat',
+                  data: 'lng',
                   type: 'numeric',
                   format: '0.00000',
                 },
@@ -99,6 +115,28 @@ angular.module('bogisApp')
                 },
                 {
                   data: 'address'
+                },
+                {
+                  type: 'dropdown',
+                  data: 'size',
+                  source: ["Small", "Medium", "Large"]
+                },
+                {
+                  type: 'dropdown',
+                  data: 'color',
+                  source: ["yellow", "red", "orange", "green", "blue", "gray", "black", "white"]
+                },
+                {
+                  data: 'URL'
+                },
+                {
+                  data: 'Filter1'
+                },
+                {
+                  data: 'Filter2'
+                },
+                {
+                  data: 'Filter3'
                 }
               ],
               minSpareRows: 1 //,
@@ -106,29 +144,6 @@ angular.module('bogisApp')
               //afterChange: stuffChanges
             });
 
-           // Create a new geojson object that'll represent the table values.
-          var geojson = { type: 'FeatureCollection', features: [] };
-          // For each table row, create a marker.
-          for (var i = 0; i < $scope.data.length; i++) {
-            // Blank rows shouldn't be included - they're easy to detect and skip.
-            if ($scope.data[i].lon !== null && $scope.data[i].lat !== null) {
-              geojson.features.push({
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [ $scope.data[i].lng, $scope.data[i].lat]
-                },
-                properties: {
-                  'marker-size': "small",
-                  'marker-color': "#ff0000",
-                  'title': $scope.data[i].name + '<br/>' + $scope.data[i].message
-                }
-              });
-            }
-          }
-          dataLayer.setGeoJSON(geojson);
-          map.fitBounds(dataLayer.getBounds());
       };
-
-
+ 
   }]);
