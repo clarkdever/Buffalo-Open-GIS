@@ -57,7 +57,14 @@
             <ul class="nav navbar-nav">
               <li><a href="/#home" class="smoothScroll">Home</a></li>
         			<li> <a href="/#about" class="smoothScroll"> About</a></li>
-        			<li> <a href="/#maps" class="smoothScroll"> Maps</a></li>
+        			<li> <a ng-show-auth="" class="dropdown-toggle ng-cloak" data-toggle="dropdown"> Maps<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#/map/0">Create Map</a></li>
+                          <li><a href="#/profile">Your Maps</a></li>
+                          <li><a href="#maps">Most Popular</a></li>
+                          <li><a href="#/allmaps">All</a></li>
+                        </ul>
+                    </li>
         			<li> <a href="/#team" class="smoothScroll"> Team</a></li>
         			<li> <a href="#contact" class="smoothScroll"> Contact</a></li>
               <li class="ng-cloak"> <a ng-hide-auth="" href="#/login" class="smoothScroll">Log in</a></li>
@@ -88,40 +95,16 @@
 				<br>
 				<div class="col-lg-4">
 					<h3>Contact Information</h3>
-					<p><span class="icon icon-home"></span> <a href="https://www.algonquinstudios.com">Algonquin Studios</a><br/>
+					<p><span class="icon icon-home"></span> <a href="http://vcamp.co/" target="_blank">VCAMP</a><br/>
 						<span class="icon icon-phone"></span> 716-842-1439 <br/>
-						<span class="icon icon-envelop"></span> <a href="mailto:info@algonquinstudios.com">info@algonquinstudios.com</a> <br/>
-						<span class="icon icon-twitter"></span> <a href="https://twitter.com/ASBuffalo">@ASBuffalo</a> <br/>
-						<span class="icon icon-facebook"></span> <a href="https://www.facebook.com/AlgonquinStudios/">Like Us</a> <br/>
+						<span class="icon icon-envelop"></span> <a href="mailto:stevek@vcamphq.com">stevek@vcamphq.com</a> <br/>
+						<span class="icon icon-twitter"></span> <a href="https://twitter.com/VCAMPHQ" target="_blank">@VCAMPHQ</a> <br/>
+						<span class="icon icon-facebook"></span> <a href="https://facebook.com/AlgonquinStudios" target="_blank">Like Us</a> <br/>
 					</p>
 				</div><!-- col -->
-
 				<div class="col-lg-4">
-					<h3>Register</h3>
-					<p>Register for an account here and start making your own maps</p>
-					<p>
-						<form class="form-horizontal" role="form">
-						  <div class="form-group">
-						    <label for="inputEmail1" class="col-lg-4 control-label"></label>
-						    <div class="col-lg-10">
-						      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
-						    </div>
-						  </div>
-						  <div class="form-group">
-						    <label for="text1" class="col-lg-4 control-label"></label>
-						    <div class="col-lg-10">
-						      <input type="text" class="form-control" id="text1" placeholder="Your Name">
-						    </div>
-						  </div>
-						  <div class="form-group">
-						    <div class="col-lg-10">
-						      <button type="submit" class="btn btn-success">Create Account</button>
-						    </div>
-						  </div>
-					   </form><!-- form -->
-					</p>
+					<p><iframe width="320" height="180" src="https://www.youtube.com/embed/lM_McLNBZxo?feature=player_detailpage" frameborder="0" allowfullscreen></iframe></p>
 				</div><!-- col -->
-
 				<div class="col-lg-4">
 					<h3>Help Us</h3>
 					<p>Together we can make Buffalo an even better city.  Share this app with the people who need access to your maps  or a way to create their own.</p>
@@ -134,7 +117,7 @@
 		<div id="footerwrap">
 			<div class="container">
         <div class="pull-left">
-				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> <span xmlns:dct="https://purl.org/dc/terms/" property="dct:title">Buffalo Open GIS</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="https://www.algonquinstudios.com" property="cc:attributionName" rel="cc:attributionURL">Algonquin Studios</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+				<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a> <span xmlns:dct="https://purl.org/dc/terms/" property="dct:title">Buffalo Open GIS</span> by <a xmlns:cc="https://creativecommons.org/ns#" href="http://vcamp.co/" property="cc:attributionName" rel="cc:attributionURL" target="_blank">VCAMP</a> is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
         </div>
 			</div>
 		</div>
