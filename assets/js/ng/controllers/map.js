@@ -20,10 +20,42 @@ angular.module('bogisApp')
     //Create the map
     var map = L.mapbox.map('map', 'gianadda.k2gfi54f').setView([0, 0], 1);
     var geocoder = L.mapbox.geocoder('mapbox.places-v1');
-
+    $scope.AllowAnonAdd = false;
+      
     //Add a layer that we will add our markers to later
     var dataLayer = L.mapbox.featureLayer().addTo(map);
 
+      //If navigator is there, show the Add location button
+      //TODO: add the code to check for "allow anon add"
+      if (navigator.geolocation) {
+          $scope.AllowAnonAdd = true;
+          /*
+          navigator.geolocation.getCurrentPosition(function(position){
+          $scope.$apply(function(){
+            $scope.position = position;
+          });
+          
+          });
+        */
+      }
+      
+      //Scope function to load data
+      $scope.AddMyPoint = function ()  {
+         if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position){
+            var dataElement = {};
+            dataElement.name = "my new Point";
+            dataElement.description = "";
+            dataElement.lat = position.coords.latitude;
+            dataElement.lng = position.coords.longitude;
+            dataElement.color = "red";
+            dataElement.size = "small";
+            $scope.data.$add(dataElement);
+            $scope.LoadData();
+          });
+
+      }
+       };
 
       //Scope function to load data
       $scope.LoadData = function ()  {
