@@ -77,7 +77,7 @@ angular.module('bogisApp')
           // For each table row, create a marker.
           for (var i = 0; i < $scope.data.length; i++) {
             // Blank rows shouldn't be included - they're easy to detect and skip.
-            if ($scope.data[i].lon !== null && $scope.data[i].lat !== null) {
+            if ($scope.data[i].lon !== null && $scope.data[i].lat !== null && $scope.data[i].lat !== "" && $scope.data[i].lon !== "") {
               geojson.features.push({
                 type: 'Feature',
                 geometry: {
