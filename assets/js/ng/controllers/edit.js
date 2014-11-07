@@ -8,7 +8,7 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'user', 'FBURL', 'fbutil', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase, user, FBURL, fbutil, MBAccessToken, $routeParams)  {
+  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'user', 'FBURL', 'fbutil', 'MBAccessToken', '$routeParams', 'urlGenerator', function($scope, $filter, $firebase, user, FBURL, fbutil, MBAccessToken, $routeParams, urlGenerator)  {
   	console.log("EditCtrl");
 
     $scope.route = { mapId: $routeParams.mapId };
@@ -37,8 +37,8 @@ angular.module('bogisApp')
       $table.handsontable('render');
     };
     $window.on('resize', calculateSize);
-    calculateSize();      
-      
+    calculateSize();
+
       //Scope function to load data
       $scope.LoadData = function () {
         var ref = new Firebase(FBURL + "/users/" + user.uid + "/maps/" + $scope.route.mapId);
@@ -47,10 +47,10 @@ angular.module('bogisApp')
           console.log('loaded', $scope.data);
           dataToMarkers();
         });
-        
+
        };
 
-        $scope.thisMap;   
+        $scope.thisMap;
         loadThisMap();
 
         function loadThisMap() {
@@ -59,11 +59,11 @@ angular.module('bogisApp')
           }
           fbutil.syncObject( "users/" + user.uid + "/maps/" + $scope.route.mapId).$bindTo($scope, 'thisMap').then(function() {
               var nick = nick;
-              
+
           })
         }
-      
-      
+
+
       $scope.LoadData();
 
       $scope.saveTable = function () {
@@ -99,7 +99,7 @@ angular.module('bogisApp')
           });
           //setTimeout(500,$scope.LoadData());
        };
-      
+
       var checkboxRenderer = function (instance, td, row, col, prop, value, cellProperties) {
         var $td = $(td);
        // if (value !== true && value !== false)
@@ -167,5 +167,5 @@ angular.module('bogisApp')
             });
 
       };
- 
+
   }]);
