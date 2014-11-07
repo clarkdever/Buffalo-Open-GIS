@@ -28,7 +28,7 @@
                 <div class="form-group">
                   <label class="col-xs-3 control-label" for="title">Map Title:</label>
                   <div class="col-xs-6">
-                  <input id="title" name="title" type="text" ng-keypress="clear()" ng-model="title" placeholder="What's this map about?" class="form-control input-normal">
+                  <input id="title" name="title" type="text" ng-keypress="clear()" ng-model="thisMap.mapName" placeholder="What's this map about?" class="form-control input-normal">
                   <span class="help-block"></span>
                   </div>
                 </div>
@@ -38,7 +38,7 @@
                   <label class="col-xs-3 control-label" for="checkboxes">Allow Others To Add Data?</label>
                   <div class="col-xs-6">
                     <label class="checkbox-inline" for="editable">
-                      <input type="checkbox" name="editable" id="editable" value="true">
+                      <input type="checkbox" name="editable" ng-model="thisMap.AllowAnonAdd" id="editable" value="true">
                     </label>
                   </div>
                 </div>
@@ -47,13 +47,10 @@
                 <div class="form-group">
                   <label class="col-md-3 control-label" for="instructions">Instructions:</label>
                   <div class="col-md-6">
-                    <textarea class="form-control" id="instructions" name="Instructions" placeholder="Instructions for people who are adding points to the map."></textarea>
+                    <textarea class="form-control" id="instructions" name="Instructions" ng-model="thisMap.Instructions" placeholder="Instructions for people who are adding points to the map."></textarea>
                   </div>
                 </div>
 
-                <div class="col-xs-3">
-                  <button class="btn btn-success pull-right"  ng-click="save()">Save Changes</button><br />
-                </div>
 
                 <p class="error" ng-show="emailerr">{{emailerr}}</p>
                 <p class="good" ng-show="emailmsg">{{emailmsg}}</p>

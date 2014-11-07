@@ -8,7 +8,7 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'user', 'FBURL', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase, user, FBURL, MBAccessToken, $routeParams)  {
+  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'user', 'FBURL', 'fbutil', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase, user, FBURL, fbutil, MBAccessToken, $routeParams)  {
   	console.log("EditCtrl");
 
     $scope.route = { mapId: $routeParams.mapId };
@@ -47,8 +47,23 @@ angular.module('bogisApp')
           console.log('loaded', $scope.data);
           dataToMarkers();
         });
+        
        };
 
+        $scope.thisMap;   
+        loadThisMap();
+
+        function loadThisMap() {
+          if( $scope.thisMap ) {
+            $scope.thisMap.$destroy();
+          }
+          fbutil.syncObject( "users/" + user.uid + "/maps/" + $scope.route.mapId).$bindTo($scope, 'thisMap').then(function() {
+              var nick = nick;
+              
+          })
+        }
+      
+      
       $scope.LoadData();
 
       $scope.saveTable = function () {
@@ -84,8 +99,17 @@ angular.module('bogisApp')
           });
           //setTimeout(500,$scope.LoadData());
        };
+      
+      var checkboxRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+        var $td = $(td);
+       // if (value !== true && value !== false)
+        value = true;
 
+        // Center the checkbox within the cell
+        $td.addClass('center');
 
+        Handsontable.CheckboxCell.renderer.apply(this, arguments);
+    }
 
       function dataToMarkers() {
 
@@ -139,9 +163,7 @@ angular.module('bogisApp')
                   data: 'Filter3'
                 }
               ],
-              minSpareRows: 1 //,
-              // Everytime the table is changed, update the markers on the map.
-              //afterChange: stuffChanges
+              minSpareRows: 1
             });
 
       };
