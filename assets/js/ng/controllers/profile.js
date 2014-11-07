@@ -8,11 +8,14 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('ProfileCtrl', [ "$scope","$filter", "$firebase", "fbutil", "$routeParams", function($scope, $filter, $firebase, fbutil, $routeParams)  {
+  .controller('ProfileCtrl', [ '$scope','$filter', '$firebase', 'fbutil', '$routeParams', function($scope, $filter, $firebase, fbutil, $routeParams)  {
   	console.log("ProfileCtrl");
 
     $scope.route = { userName: $routeParams.userName };
-
+    if (typeof($scope.route.userName) == "undefined" ) {
+        $scope.route.userName = user.uid;
+    }
+      
     $scope.viewUserProfile;   
     loadViewProfile($scope.route.userName);
 

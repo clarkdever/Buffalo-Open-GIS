@@ -1,0 +1,16 @@
+<div id="greywrap">
+  <div class="row">
+    <h2>Maps</h2>
+
+    <div ng-repeat="(username, user) in myMaps">
+        
+            <a href="/index.html#/profile/{{username}}">{{user.name}}</a>
+        <div ng-repeat="(mapname, map) in user.maps">
+            <a href="/index.html#/map/{{username}}/{{mapname}}">{{mapname}}</a>
+            
+        </div>
+    </div>
+
+    
+</div>
+</div>
