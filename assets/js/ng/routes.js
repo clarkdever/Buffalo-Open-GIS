@@ -71,7 +71,7 @@ angular.module('bogisApp')
         templateUrl: 'views/edit.html',
         controller: 'EditCtrl'
       })
-
+    
       .when('/profile/:userName',
       {
         templateUrl: "views/profile.html",

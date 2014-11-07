@@ -115,7 +115,15 @@
             <p class="good" ng-show="emailmsg">{{emailmsg}}</p>
         </fieldset>
     </form>
-    
+    <div>
+    <h3>Maps</h3>
+        <ul>
+            <li ng-repeat="(mapname, map) in profile.maps">
+                <a href="/index.html#/map/{{profile.$id}}/{{mapname}}">{{mapname}}</a> [<a href="/index.html#/edit/{{mapname}}">edit</a>]
+                
+            </li>
+        </ul>
+  </div>
     
     
     <div class="col-xs-7">
