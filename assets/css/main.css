@@ -647,8 +647,12 @@ a:after {
 
 
 /*Leaflet CSS*/
-#map {
-    height: 600px;
+#map.fullscreen{
+  height: 600px;
+}
+
+#map.embed{
+  height: 100%;
 }
 
 /*map css*/
@@ -665,6 +669,9 @@ a:after {
   right:10px;
   z-index:100
   }
-
-
-
+.share {
+  position:absolute;
+  top:10px;
+  left:50px;
+  z-index:100
+  }
