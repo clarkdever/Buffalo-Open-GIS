@@ -41,22 +41,21 @@ angular.module('bogisApp')
       
       //Scope function to load data
       $scope.AddMyPoint = function ()  {
-         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position){
-            var dataElement = {};
-            dataElement.name = "my new Point";
-            dataElement.description = "";
-            dataElement.lat = position.coords.latitude;
-            dataElement.lng = position.coords.longitude;
-            dataElement.color = "red";
-            dataElement.size = "small";
-            $scope.data.$add(dataElement);
-            $scope.LoadData();
-          });
-
-      }
+          
+          if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(saveMyLocationData);
+            } else {
+                console.log('Cannot determine geolocation','Cannot determine geolocation');
+            }
+         
        };
-
+      
+      $scope.showMyLocationModal = function ()  {
+          
+          $('#addLocationModal').modal('show');
+         
+       };
+      
       //Scope function to load data
       $scope.LoadData = function ()  {
         var ref = new Firebase(FBURL + "/users/" + $routeParams.userName + "/maps/" + $routeParams.mapId);
@@ -130,6 +129,21 @@ angular.module('bogisApp')
 
         return false;
      }
-         
+      
+      
+      
+      function saveMyLocationData(position){
+            console.log('geoLocation', 'Lat: ' + position.coords.latitude + ', Long: ' + position.coords.longitude);
+            var dataElement = {};
+            dataElement.name = $scope.myLocation.name;
+            dataElement.description = $scope.myLocation.comment;
+            dataElement.lat = position.coords.latitude;
+            dataElement.lng = position.coords.longitude;
+            dataElement.color = $scope.myLocation.color;
+            dataElement.size = $scope.myLocation.size;
+            $scope.data.$add(dataElement);
+            $scope.LoadData();
+            $('#addLocationModal').modal('hide');
+        }
       
   }]);
