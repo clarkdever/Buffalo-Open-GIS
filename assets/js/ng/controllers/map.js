@@ -136,7 +136,7 @@ angular.module('bogisApp')
             console.log('geoLocation', 'Lat: ' + position.coords.latitude + ', Long: ' + position.coords.longitude);
             var dataElement = {};
             dataElement.name = $scope.myLocation.name;
-            dataElement.description = $scope.myLocation.comment;
+            dataElement.message = $scope.myLocation.comment;
             dataElement.lat = position.coords.latitude;
             dataElement.lng = position.coords.longitude;
             dataElement.color = $scope.myLocation.color;
