@@ -1,5 +1,6 @@
 <div>
-  <button data-toggle="modal" href="#myModal" class="btn btn-default share">Details</button>
+  <button data-toggle="modal" href="#myModal" class="btn btn-default">Details</button>
+  <h2 style="display:inline;padding:10px;">{{thisMap.mapName}}</h2>
 
   <!--Map-->
   <div id='map' class="fullscreen"></div>
@@ -10,7 +11,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Example Data Set</h4>
+          <h4 class="modal-title">{{thisMap.mapName}}</h4>
         </div>
         <div class="modal-body">
           <p><div class="fb-share-button" data-href="{{myURL}}" data-layout="button_count"></div>
@@ -19,7 +20,7 @@
           window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
           </script>
           </p>
-          <p>Map Description</p>
+          <p>{{thisMap.Description}}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
