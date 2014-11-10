@@ -7,7 +7,7 @@ console.log("Url Generator");
  * # MainCtrl
  * Controller for URL Generation
  */
-angular.module('bogisApp').controller('UrlGenerator', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
+angular.module('bogisApp').controller('UrlGenerator', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 
     $scope.nouns = [];
     $scope.adjectives = [];
@@ -23,9 +23,9 @@ angular.module('bogisApp').controller('UrlGenerator', ['$scope', '$http', '$loca
 
     $scope.getURL = function() {
 
-      var path = "edit/" + getRandomAdjective().trim() + getRandomAdjective().trim() + getRandomNoun().trim();
+      var path = "index.html#/edit/" + getRandomAdjective().trim() + getRandomAdjective().trim() + getRandomNoun().trim();
       console.log("path: ", path);
-      $window.location.href( path );
+      $window.location.href = path;
     };
 
     var getRandomNoun = function(){

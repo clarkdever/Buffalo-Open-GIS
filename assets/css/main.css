@@ -114,7 +114,7 @@ margin-left: -15px;
 }
 
 #navbar-main {
-  padding-top:51px;
+  padding-top:75px;
 }
 
 .navbar-default {
@@ -652,7 +652,7 @@ a:after {
 /*Leaflet CSS*/
 #map.fullscreen{
 
-  top: 51px;   
+  top: 51px;
   height: 550px;
 }
 
@@ -675,12 +675,7 @@ a:after {
   width: 100%;
   height: 600px;
   }
-.save {
-  position:absolute;
-  top:100px;
-  left:200px;
-  z-index:100
-  }
+
 .share {
   position:absolute;
   top:10px;
@@ -688,7 +683,7 @@ a:after {
   z-index:100
   }
 
-/*edit map*/
+/*edit map
 .config {
   position:absolute;
   top:100px;
@@ -696,6 +691,14 @@ a:after {
   z-index:100
   }
 
+  .save {
+    position:absolute;
+    top:100px;
+    left:200px;
+    z-index:100
+    }
+
+*/
 /*hide loading*/
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;

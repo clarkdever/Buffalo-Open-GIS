@@ -2,30 +2,30 @@
   <div>
 
   </div>
-  <div>
-    Map: {{route.mapId}}
+  <div class="container">
+      <div class="row"
+      <!-- Map Name -->
+      <form class="form-horizontal pull-left col-xs-10">
+        <div class="form-group">
+          <label class="col-xs-3 control-label" for="title">Map Name:</label>
+          <div class="col-xs-6">
+          <input id="titleTop" name="titleTop" type="text" ng-keypress="clear()" ng-model="route.mapId" placeholder="What's this map about?" class="form-control input-normal">
+          <span class="help-block"></span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+    <!-- Map Details -->
+    <button data-toggle="modal" href="#myModal" class="btn btn-primary config">Configure</button>
+    <!-- Save Button -->
+    <button class="btn btn-success save" ng-click="saveTable()" >Save</button>
+    </div>
   </div>
+  <!-- Draw The Table -->
   <div>
      <div id='table' class='ui-table'></div>
   </div>
-
-  <!-- Map Name
-  <form class="form-horizontal">
-    <div class="form-group">
-      <label class="col-xs-3 control-label" for="title">Map Name:</label>
-      <div class="col-xs-6">
-      <input id="title" name="title" type="text" ng-keypress="clear()" ng-model="thisMap.mapName" placeholder="What's this map about?" class="form-control input-normal">
-      <span class="help-block"></span>
-      </div>
-    </div>
-  </form>
-  -->
-
-  <!-- Map Details -->
-  <button data-toggle="modal" href="#myModal" class="btn btn-primary config">Configure</button>
-  <h2>{{thisMap.mapName}}</h2>
-  <!-- Save Button -->
-  <button class="btn btn-success save" ng-click="saveTable()" >Save</button>
 
 
 <!-- Modal -->
@@ -44,7 +44,7 @@
                 <div class="form-group">
                   <label class="col-xs-3 control-label" for="title">Map Name:</label>
                   <div class="col-xs-6">
-                  <input id="title" name="title" type="text" ng-keypress="clear()" ng-model="thisMap.mapName" placeholder="What's this map about?" class="form-control input-normal">
+                  <input id="title" name="title" type="text" ng-keypress="clear()" ng-model="route.mapId" placeholder="What's this map about?" class="form-control input-normal">
                   <span class="help-block"></span>
                   </div>
                 </div>
