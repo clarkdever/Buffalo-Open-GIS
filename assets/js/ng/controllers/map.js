@@ -20,6 +20,7 @@ angular.module('bogisApp')
     //Create the map
     var map = L.mapbox.map('map', 'gianadda.k2gfi54f', {zoomControl: true}).setView([0, 0], 1);
     // Disable drag and zoom handlers.
+    map.dragging.disable();
     map.touchZoom.disable();
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
