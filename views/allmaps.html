@@ -1,16 +1,23 @@
 <div id="greywrap">
   <div class="row">
-    <h2>Maps</h2>
 
-    <div ng-repeat="(username, user) in myMaps">
-        
-            <a href="/index.html#/profile/{{username}}">{{user.name}}</a>
-        <div ng-repeat="(mapname, map) in user.maps">
-            <a href="/index.html#/map/{{username}}/{{mapname}}">{{map.mapName}}</a>
-            
-        </div>
+    <div class="container">
+      <p>
+        <table class="table table-striped table-bordered" ng-cloak>
+          <thead><tr class="info"><th>All Maps</th></tr></thead>
+          <tbody>
+              <!-- List Users -->
+              <tr ng-repeat-start="(username, user) in myMaps">
+                <td class="text-left success"><a href="/index.html#/profile/{{username}}">{{user.name}}</a></td>
+              </tr>
+              <!-- List the User's Map -->
+              <tr ng-repeat-end ng-repeat="(mapname, map) in user.maps">
+                <td class="text-center" ><a href="/index.html#/map/{{username}}/{{mapname}}">{{map.mapName}}</a>[<a href="/index.html#/edit/{{mapname}}">edit</a>]</td>
+              </tr>
+            </tbody>
+        </table>
+      </p>
     </div>
 
-    
-</div>
+  </div>
 </div>

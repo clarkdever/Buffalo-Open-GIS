@@ -115,17 +115,20 @@
             <p class="good" ng-show="emailmsg">{{emailmsg}}</p>
         </fieldset>
     </form>
-    <div>
-    <h3>Maps</h3>
-        <ul>
-            <li ng-repeat="(mapname, map) in profile.maps">
-                <a href="/index.html#/map/{{profile.$id}}/{{mapname}}">{{map.mapName}}</a> [<a href="/index.html#/edit/{{mapname}}">edit</a>]
-                
-            </li>
-        </ul>
-  </div>
-    
-    
+    <div class="container">
+    <p>
+      <table class="table table-striped table-bordered">
+        <thead><tr class="success"><th>Your Maps</th></tr></thead>
+        <tbody>
+            <tr ng-repeat="(mapname, map) in profile.maps">
+              <td class="text-center"><a href="/index.html#/map/{{profile.$id}}/{{mapname}}">{{map.mapName}}</a> [<a href="/index.html#/edit/{{mapname}}">edit</a>]</td>
+            </tr>
+          </tbody>
+      </table>
+    </p>
+    </div>
+
+
     <div class="col-xs-7">
       <button class="btn btn-danger pull-left"  ng-click="logout()">Log Out</button>
     </div>
