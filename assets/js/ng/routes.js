@@ -71,7 +71,7 @@ angular.module('bogisApp')
         templateUrl: 'views/edit.html',
         controller: 'EditCtrl'
       })
-    
+
       .when('/profile/:userName',
       {
         templateUrl: "views/profile.html",
@@ -89,7 +89,7 @@ angular.module('bogisApp')
         templateUrl: "views/allmaps.html",
         controller: "AllMapCtrl"
       })
-    
+
       .whenAuthenticated('/account', {
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'

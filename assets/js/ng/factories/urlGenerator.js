@@ -1,5 +1,5 @@
 'use strict';
-console.log("url generator");
+console.log("Url Generator");
 /**
  * @ngdoc function
  * @name bogisApp.controller:MainCtrl
@@ -7,43 +7,35 @@ console.log("url generator");
  * # MainCtrl
  * Controller for URL Generation
  */
-angular.module('bogisApp').
-  controller('urlTest', ['$scope','urlGenerator', function ($scope, urlGenerator) {
-    console.log("urlTest");
+angular.module('bogisApp').controller('UrlGenerator', ['$scope', '$http', '$location', function ($scope, $http, $location) {
 
-    console.log(urlGenerator.test());
-  }])
-  .service('urlGenerator', ['$window', '$scope', function(win, $scope) {
-    console.log("url generator factory");
-
-    var $scope.nouns = [];
-    var $scope.adjectives = [];
+    $scope.nouns = [];
+    $scope.adjectives = [];
 
     this.init = function(){
 
-      $http.get(('assets/js/ng/factories/animals.txt').then(function (data) { $scope.nouns = data.split('\n'); });
-      $http.get(('assets/js/ng/factories/adjectives.txt').then(function (data) { $scope.adjectives = data.split('\n'); });
+      $http.get('assets/js/ng/factories/animals.txt').success(function (data) { $scope.nouns = data.split('\n')});
+      $http.get('assets/js/ng/factories/adjectives.txt').success(function (data) { $scope.adjectives = data.split('\n')});
 
     }
 
     this.init();
 
-    this.test = function(){
-      console.log('test1');
-      console.log(nouns, adjectives);
-    }
+    $scope.getURL = function() {
 
-    this.getURL = function() {
-      return "" + this.getRandomAdjective() + this.getRandomAdjective + this.getRandomNoun();
+      var path = "edit/" + getRandomAdjective() + getRandomAdjective() + getRandomNoun();
+      console.log("path: ", path);
+      $location.hash( path );
     };
 
-    this.getRandomNoun = function(){
-      var val = Math.floor(Math.random() * (nouns.length - 0)) + 0;
-      return nouns(val);
+    var getRandomNoun = function(){
+      var val = Math.floor(Math.random() * ($scope.nouns.length - 0)) + 0;
+      return $scope.nouns[val];
     };
 
-    this.getRandomAdjective = function(){
-      var val = Math.floor(Math.random() * (nouns.length - 0)) + 0;
-      return adjectives(val);
+    var getRandomAdjective = function(){
+      var val = Math.floor(Math.random() * ($scope.adjectives.length - 0)) + 0;
+      return $scope.adjectives[val];
     };
+
   }]);

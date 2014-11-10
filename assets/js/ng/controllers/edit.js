@@ -8,7 +8,7 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'user', 'FBURL', 'fbutil', 'MBAccessToken', '$routeParams', 'urlGenerator', function($scope, $filter, $firebase, user, FBURL, fbutil, MBAccessToken, $routeParams, urlGenerator)  {
+  .controller('EditCtrl', [ '$scope','$filter', '$firebase', 'user', 'FBURL', 'fbutil', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase, user, FBURL, fbutil, MBAccessToken, $routeParams)  {
   	console.log("EditCtrl");
 
     $scope.route = { mapId: $routeParams.mapId };
