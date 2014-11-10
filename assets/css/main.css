@@ -649,11 +649,15 @@ a:after {
 /*Leaflet CSS*/
 #map.fullscreen{
 
+ top: 51px;   
   height: 550px;
 }
 
 #addLocation {
- top: 51px;   
+  position:absolute;
+  top:31px;
+  left:25px;
+  z-index:100
 }
 
 #map.embed{

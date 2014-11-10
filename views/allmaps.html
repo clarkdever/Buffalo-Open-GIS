@@ -11,7 +11,7 @@
                 <td class="text-left success"><a href="/index.html#/profile/{{username}}">{{user.name}}</a></td>
               </tr>
               <!-- List the User's Map -->
-              <tr ng-repeat-end ng-repeat="(mapname, map) in user.maps">
+              <tr ng-if="user.maps" ng-repeat-end ng-repeat="(mapname, map) in user.maps">
                 <td class="text-center" ><a href="/index.html#/map/{{username}}/{{mapname}}">{{map.mapName}}</a>[<a href="/index.html#/edit/{{mapname}}">edit</a>]</td>
               </tr>
             </tbody>
