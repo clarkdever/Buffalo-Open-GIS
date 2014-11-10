@@ -118,7 +118,7 @@ angular.module('bogisApp')
               startRows: 7,
               startCols: 4,
               fixedColumnsLeft: 2,
-              colHeaders: [ 'Latitude', 'Longitude', 'Name', 'Comment', 'Address',  'Size', 'Color', 'URL', 'Filter 1', 'Filter 2', 'Filter 3'],
+              colHeaders: ['Latitude', 'Longitude', 'Name', 'Comment', 'Address',  'Size', 'Color', 'URL', 'Filter 1', 'Filter 2', 'Filter 3'],
               columnSorting: true,
               columns: [
                 {
