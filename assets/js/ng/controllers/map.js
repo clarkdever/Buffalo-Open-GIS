@@ -8,7 +8,7 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('MapCtrl',  [ '$scope','$filter', '$firebase',  'FBURL', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase,  FBURL, MBAccessToken, $routeParams)  {
+  .controller('MapCtrl',  [ '$scope','$filter', '$firebase',  'FBURL', 'fbutil', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase,  FBURL, fbutil,  MBAccessToken, $routeParams)  {
   	console.log("MapCtrl");
 
     $scope.route = { mapId: $routeParams.mapId, userId: $routeParams.userName };
@@ -18,26 +18,53 @@ angular.module('bogisApp')
     L.mapbox.accessToken = MBAccessToken;
 
     //Create the map
-    var map = L.mapbox.map('map', 'gianadda.k2gfi54f').setView([0, 0], 1);
+    var map = L.mapbox.map('map', 'gianadda.k2gfi54f', {zoomControl: true}).setView([0, 0], 1);
+    // Disable drag and zoom handlers.
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+
+      
+      
     var geocoder = L.mapbox.geocoder('mapbox.places-v1');
     $scope.AllowAnonAdd = false;
-      
+     
     //Add a layer that we will add our markers to later
     var dataLayer = L.mapbox.featureLayer().addTo(map);
 
-      //If navigator is there, show the Add location button
-      //TODO: add the code to check for "allow anon add"
-      if (navigator.geolocation) {
-          $scope.AllowAnonAdd = true;
-          /*
-          navigator.geolocation.getCurrentPosition(function(position){
-          $scope.$apply(function(){
-            $scope.position = position;
-          });
+        $scope.thisMap;   
+        loadThisMap();
+
+        function loadThisMap() {
+          if( $scope.thisMap ) {
+            $scope.thisMap.$destroy();
+          }
+          fbutil.syncObject("/users/" + $routeParams.userName + "/maps/" + $routeParams.mapId).$bindTo($scope, 'thisMap').then(function() {
+               if (typeof($scope.thisMap.AllowAnonAdd) !== 'undefined') {
+                  //If navigator is there, show the Add location button
+                  if (navigator.geolocation) {
+                      $scope.AllowAnonAdd = $scope.thisMap.AllowAnonAdd
+                      //
+                      // HACK ALERT!!! Can't get Angular to do what I want...
+                      //
+                      if ($scope.AllowAnonAdd) {
+                          $("#addLocation").removeClass('ng-hide');
+                      }
+                  }
+               }
+
+          })
+        }
+      
+//      
+       //Scope function to load data
+      $scope.AllowAnon = function ()  {
           
-          });
-        */
-      }
+         return $scope.AllowAnonAdd;
+         
+       };
+      
+      
       
       //Scope function to load data
       $scope.AddMyPoint = function ()  {
@@ -76,7 +103,12 @@ angular.module('bogisApp')
           // For each table row, create a marker.
           for (var i = 0; i < $scope.data.length; i++) {
             // Blank rows shouldn't be included - they're easy to detect and skip.
-            if ($scope.data[i].lon !== null && $scope.data[i].lat !== null && $scope.data[i].lat !== "" && $scope.data[i].lon !== "") {
+            if (typeof($scope.data[i].lat) !== 'undefined' &&
+                    typeof($scope.data[i].lng) !== 'undefined' &&
+                    $scope.data[i].lng !== null && 
+                    $scope.data[i].lat !== null && 
+                    $scope.data[i].lat !== "" && 
+                    $scope.data[i].lng !== "" ) {
               geojson.features.push({
                 type: 'Feature',
                 geometry: {
@@ -84,7 +116,7 @@ angular.module('bogisApp')
                   coordinates: [ $scope.data[i].lng, $scope.data[i].lat]
                 },
                 properties: {
-                  'marker-size': $scope.data[i].size.toLowerCase(),
+                  'marker-size': ValidateSize($scope.data[i].size).toLowerCase(),
                   'marker-color': ConvertColorNameToHex($scope.data[i].color),
                   'title': CreateToolTipPopup($scope.data[i])
                 }
@@ -114,23 +146,35 @@ angular.module('bogisApp')
 
      function ConvertColorNameToHex(color) {
      
-         var colors = {
-             "yellow":"#ffff00",
-             "red":"#ff0000",
-             "orange":"#ffa500",
-             "green":"#008000",
-             "blue":"#0000ff",
-             "gray":"#808080",
-             "black":"#000000",
-             "white":"#ffffff"};
+         if (typeof(color) != 'undefined') {
+             
+             var colors = {
+                 "yellow":"#ffff00",
+                 "red":"#ff0000",
+                 "orange":"#ffa500",
+                 "green":"#008000",
+                 "blue":"#0000ff",
+                 "gray":"#808080",
+                 "black":"#000000",
+                 "white":"#ffffff"};
 
-        if (typeof colors[color.toLowerCase()] != 'undefined')
-            return colors[color.toLowerCase()];
-
-        return false;
+            if (typeof colors[color.toLowerCase()] != 'undefined')
+                return colors[color.toLowerCase()];
+         }
+         
+        //If you don't find it, return blue
+        return "#0000ff";
      }
       
-      
+ 
+     function ValidateSize(size) {
+     
+        if (size == 'Small' || size == 'Medium' || size == 'Large')
+            return size;
+
+        return 'Small' ;
+     }
+           
       
       function saveMyLocationData(position){
             console.log('geoLocation', 'Lat: ' + position.coords.latitude + ', Long: ' + position.coords.longitude);

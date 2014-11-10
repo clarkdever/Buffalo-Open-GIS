@@ -1,7 +1,7 @@
 <div>
 
   <div id='map' class="fullscreen"></div>
-  <div id='addLocation'>
+  <div id='addLocation' ng-show="$scope.AllowAnonAdd">
       <button ng-click="showMyLocationModal()" name="addLocation" id="addLocation" class="btn btn-primary btn-lg">Add Your Location</button>
    </div>
      <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
