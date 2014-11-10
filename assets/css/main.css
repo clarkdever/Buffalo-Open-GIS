@@ -547,6 +547,7 @@ a:after {
 	overflow: hidden;
 }
 
+
 .mask figure img {
 	-webkit-transition: -webkit-transform 0.4s;
 	-moz-transition: -moz-transform 0.4s;
@@ -561,32 +562,36 @@ a:after {
 	transform: translateY(-30px);
 }
 
-.mask figcaption {
-	height: 50px;
-	width: 100%;
-	top: auto;
-	bottom: 0;
-	opacity: 0;
-	-webkit-transform: translateY(100%);
-	-moz-transform: translateY(100%);
-	-ms-transform: translateY(100%);
-	transform: translateY(100%);
-	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
-	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
-	transition: transform 0.4s, opacity 0.1s 0.3s;
+@media screen and (min-width : 992px) {
+  .mask figcaption {
+  	height: 50px;
+  	width: 100%;
+  	top: auto;
+  	bottom: 0;
+  	opacity: 0;
+  	-webkit-transform: translateY(100%);
+  	-moz-transform: translateY(100%);
+  	-ms-transform: translateY(100%);
+  	transform: translateY(100%);
+  	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
+  	-moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
+  	transition: transform 0.4s, opacity 0.1s 0.3s;
+  }
+
+
+  .no-touch .mask figure:hover figcaption,
+  .mask figure.cs-hover figcaption {
+  	opacity: 1;
+  	-webkit-transform: translateY(0px);
+  	-moz-transform: translateY(0px);
+  	-ms-transform: translateY(0px);
+  	transform: translateY(0px);
+  	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+  	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
+  	transition: transform 0.4s, opacity 0.1s;
+  }
 }
 
-.no-touch .mask figure:hover figcaption,
-.mask figure.cs-hover figcaption {
-	opacity: 1;
-	-webkit-transform: translateY(0px);
-	-moz-transform: translateY(0px);
-	-ms-transform: translateY(0px);
-	transform: translateY(0px);
-	-webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
-	-moz-transition: -moz-transform 0.4s, opacity 0.1s;
-	transition: transform 0.4s, opacity 0.1s;
-}
 
 .mask figcaption a {
 	position: absolute;
@@ -632,6 +637,20 @@ a:after {
 	body .header{background-attachment: scroll;}
 }
 
+
+  .no-touch .mask figure:hover figcaption,
+  .mask figure.cs-hover figcaption {
+    opacity: 1;
+  }
+
+
+  .mask figcaption {
+    height: 50px;
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    opacity: 1;
+  }
 
 /*ipad portrait*/
 @media only screen and (min-device-width:768px) and (max-device-width : 1024px) and (orientation : portrait){
