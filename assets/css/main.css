@@ -113,6 +113,9 @@ margin-left: -15px;
 	background: #2b2b2b;
 }
 
+#navbar-main {
+  padding-top:51px;
+}
 
 .navbar-default {
 border-color: transparent;
@@ -653,7 +656,7 @@ a:after {
 }
 
 #addLocation {
- top: 51px;   
+ top: 51px;
 }
 
 #map.embed{
