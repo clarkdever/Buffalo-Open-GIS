@@ -7,14 +7,14 @@ console.log("Url Generator");
  * # MainCtrl
  * Controller for URL Generation
  */
-angular.module('bogisApp').controller('UrlGenerator', ['$scope', '$http', '$location', function ($scope, $http, $location) {
+angular.module('bogisApp').controller('UrlGenerator', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
 
     $scope.nouns = [];
     $scope.adjectives = [];
 
     this.init = function(){
 
-      $http.get('assets/js/ng/factories/animals.txt').success(function (data) { $scope.nouns = data.split('\n')});
+      $http.get('assets/js/ng/factories/Buffalo.txt').success(function (data) { $scope.nouns = data.split('\n')});
       $http.get('assets/js/ng/factories/adjectives.txt').success(function (data) { $scope.adjectives = data.split('\n')});
 
     }
@@ -23,10 +23,9 @@ angular.module('bogisApp').controller('UrlGenerator', ['$scope', '$http', '$loca
 
     $scope.getURL = function() {
 
-      var path = "edit/" + getRandomAdjective() + getRandomAdjective() + getRandomNoun();
+      var path = "edit/" + getRandomAdjective().trim() + getRandomAdjective().trim() + getRandomNoun().trim();
       console.log("path: ", path);
-      $location.path( path );
-        //Nick
+      $window.location.href( path );
     };
 
     var getRandomNoun = function(){
