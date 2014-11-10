@@ -8,11 +8,14 @@
  * Controller of the bogisApp
  */
 angular.module('bogisApp')
-  .controller('MapCtrl',  [ '$scope','$filter', '$firebase',  'FBURL', 'fbutil', 'MBAccessToken', '$routeParams', function($scope, $filter, $firebase,  FBURL, fbutil,  MBAccessToken, $routeParams)  {
+  .controller('MapCtrl',  [ '$scope','$filter', '$firebase',  'FBURL', 'fbutil', 'MBAccessToken', '$routeParams', '$window', function($scope, $filter, $firebase,  FBURL, fbutil,  MBAccessToken, $routeParams, $window)  {
   	console.log("MapCtrl");
 
     $scope.route = { mapId: $routeParams.mapId, userId: $routeParams.userName };
-
+    $scope.myURL = $window.location.href;
+    $scope.myHost = $window.location.host;
+    $scope.myHash = $window.location.hash;
+    console.log("Location:", $scope.myHost + "/embed.html" + $scope.myHash);
 
     //Setup the token
     L.mapbox.accessToken = MBAccessToken;
@@ -20,10 +23,10 @@ angular.module('bogisApp')
     //Create the map
     var map = L.mapbox.map('map', 'gianadda.k2gfi54f', {zoomControl: true}).setView([0, 0], 1);
     // Disable drag and zoom handlers.
-    map.dragging.disable();
-    map.touchZoom.disable();
+    //map.dragging.disable();
+    //map.touchZoom.disable();
     map.doubleClickZoom.disable();
-    map.scrollWheelZoom.disable();
+    //map.scrollWheelZoom.disable();
 
 
 

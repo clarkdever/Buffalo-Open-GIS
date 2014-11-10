@@ -2,6 +2,7 @@
 <!--Buttons -->
 <div class="row">
   <button ng-click="shareModal()" name="shareMap" id="shareMap" class="btn btn-success btn-lg">Share</button> <button ng-show="$scope.AllowAnonAdd" ng-click="showMyLocationModal()" name="addLocation" id="addLocation" class="btn btn-primary btn-lg">Add Your Location</button>
+<p>{{thisMap.Description}}</p>
 </div>
 
 <!--Map-->
@@ -78,18 +79,18 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Example Data Set</h4>
+          <h4 class="modal-title">{{thisMap.mapName}}</h4>
         </div>
         <div class="modal-body">
-          <p><div class="fb-like" data-href="javascript:location.href;" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+          <p><div class="fb-share-button" data-href="{{myURL}}" data-layout="button_count"></div>
           <a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
           <script type="text/javascript">
           window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
           </script>
           </p>
-          <p>Description</p>
+          <p>{{thisMap.Description}}</p>
           <p>Embed Code</p>
-          <div class="well well-lg">Embed Code:<pre><code>&lt;iframe class="embed-responsive-item" src="embed.html#/map/{{route.mapId}}" alt="{{route.description}}" scrolling="no" seamless&gt;&lt;/iframe&gt;</code></pre></div>
+          <div class="well well-lg">Embed Code:<pre><code>&lt;iframe class="embed-responsive-item" src="{{ myHost + '/embed.html' + myHash}}" alt="{{route.description}}" scrolling="no" seamless&gt;&lt;/iframe&gt;</code></pre></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
