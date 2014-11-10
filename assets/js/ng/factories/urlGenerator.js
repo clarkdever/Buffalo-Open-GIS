@@ -25,7 +25,7 @@ angular.module('bogisApp').controller('UrlGenerator', ['$scope', '$http', '$loca
 
       var path = "edit/" + getRandomAdjective() + getRandomAdjective() + getRandomNoun();
       console.log("path: ", path);
-      $location.hash( path );
+      $location.path( path );
     };
 
     var getRandomNoun = function(){
