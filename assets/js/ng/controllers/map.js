@@ -25,15 +25,15 @@ angular.module('bogisApp')
     map.doubleClickZoom.disable();
     map.scrollWheelZoom.disable();
 
-      
-      
+
+
     var geocoder = L.mapbox.geocoder('mapbox.places-v1');
     $scope.AllowAnonAdd = false;
-     
+
     //Add a layer that we will add our markers to later
     var dataLayer = L.mapbox.featureLayer().addTo(map);
 
-        $scope.thisMap;   
+        $scope.thisMap;
         loadThisMap();
 
         function loadThisMap() {
@@ -56,34 +56,40 @@ angular.module('bogisApp')
 
           })
         }
-      
-//      
+
+//
        //Scope function to load data
       $scope.AllowAnon = function ()  {
-          
+
          return $scope.AllowAnonAdd;
-         
+
        };
-      
-      
-      
+
+
+
       //Scope function to load data
       $scope.AddMyPoint = function ()  {
-          
+
           if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(saveMyLocationData);
             } else {
                 console.log('Cannot determine geolocation','Cannot determine geolocation');
             }
-         
+
        };
-      
+
       $scope.showMyLocationModal = function ()  {
-          
+
           $('#addLocationModal').modal('show');
-         
+
        };
-      
+
+       $scope.shareModal = function ()  {
+
+           $('#shareModal').modal('show');
+
+        };
+
       //Scope function to load data
       $scope.LoadData = function ()  {
         var ref = new Firebase(FBURL + "/users/" + $routeParams.userName + "/maps/" + $routeParams.mapId);
@@ -96,7 +102,7 @@ angular.module('bogisApp')
 
       $scope.LoadData();
 
-    
+
       function dataToMarkers() {
 
            // Create a new geojson object that'll represent the table values.
@@ -106,9 +112,9 @@ angular.module('bogisApp')
             // Blank rows shouldn't be included - they're easy to detect and skip.
             if (typeof($scope.data[i].lat) !== 'undefined' &&
                     typeof($scope.data[i].lng) !== 'undefined' &&
-                    $scope.data[i].lng !== null && 
-                    $scope.data[i].lat !== null && 
-                    $scope.data[i].lat !== "" && 
+                    $scope.data[i].lng !== null &&
+                    $scope.data[i].lat !== null &&
+                    $scope.data[i].lat !== "" &&
                     $scope.data[i].lng !== "" ) {
               geojson.features.push({
                 type: 'Feature',
@@ -129,26 +135,26 @@ angular.module('bogisApp')
       };
 
     function CreateToolTipPopup(data) {
-        
+
         var htmlString = '';
         //Title
         //Desc
         htmlString = htmlString + '<h2>' + data.name + '</h2>'
-        
+
         if (typeof(data.URL) !== "undefined") {
             htmlString = htmlString + '<a href="' + data.URL + '" target="_blank" title="' + data.name + '">' + data.URL  +'</a>'
         }
-        
+
         htmlString = htmlString + '<p>' + data.message + '</p>'
-                          
+
         return htmlString;
     }
-         
+
 
      function ConvertColorNameToHex(color) {
-     
+
          if (typeof(color) != 'undefined') {
-             
+
              var colors = {
                  "yellow":"#ffff00",
                  "red":"#ff0000",
@@ -162,21 +168,21 @@ angular.module('bogisApp')
             if (typeof colors[color.toLowerCase()] != 'undefined')
                 return colors[color.toLowerCase()];
          }
-         
+
         //If you don't find it, return blue
         return "#0000ff";
      }
-      
- 
+
+
      function ValidateSize(size) {
-     
+
         if (size == 'Small' || size == 'Medium' || size == 'Large')
             return size;
 
         return 'Small' ;
      }
-           
-      
+
+
       function saveMyLocationData(position){
             console.log('geoLocation', 'Lat: ' + position.coords.latitude + ', Long: ' + position.coords.longitude);
             var dataElement = {};
@@ -190,5 +196,5 @@ angular.module('bogisApp')
             $scope.LoadData();
             $('#addLocationModal').modal('hide');
         }
-      
+
   }]);

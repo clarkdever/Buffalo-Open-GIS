@@ -1,71 +1,101 @@
-<div>
+<div class="container">
+<!--Buttons -->
+<div class="row">
+  <button ng-click="shareModal()" name="shareMap" id="shareMap" class="btn btn-success btn-lg">Share</button> <button ng-show="$scope.AllowAnonAdd" ng-click="showMyLocationModal()" name="addLocation" id="addLocation" class="btn btn-primary btn-lg">Add Your Location</button>
+</div>
 
-  <div id='map' class="fullscreen"></div>
-  <div id='addLocation' ng-show="$scope.AllowAnonAdd">
-      <button ng-click="showMyLocationModal()" name="addLocation" id="addLocation" class="btn btn-primary btn-lg">Add Your Location</button>
-   </div>
-     <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h4 class="modal-title">Add Your Location</h4>
-                </div> <!-- /.modal-header -->
-                  <div class="modal-body">
-                     <div>
-                          <label class="control-label" for="name">Name:</label>
-                          <div>
-                            <input id="name" name="name" type="text" ng-model="myLocation.name" placeholder="No Data Loaded" class="form-control input-normal">
-                            <span class="help-block"></span>
-                          </div>
-                      </div>
+<!--Map-->
+<div id='map' class="fullscreen"></div>
+
+<!--Add Location Modal-->
+ <div class="modal fade" id="addLocationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Add Your Location</h4>
+            </div> <!-- /.modal-header -->
+              <div class="modal-body">
+                 <div>
+                      <label class="control-label" for="name">Name:</label>
                       <div>
-                          <label class="control-label" for="comment">Comment:</label>
-                          <div>
-                            <textarea id="comment" name="comment" type="text" ng-model="myLocation.comment" placeholder="No Data Loaded" class="form-control input-md"/>
-                            <span class="help-block"></span>
-                          </div>
+                        <input id="name" name="name" type="text" ng-model="myLocation.name" placeholder="No Data Loaded" class="form-control input-normal">
+                        <span class="help-block"></span>
                       </div>
-                      <div>
-                          <label class="control-label" for="address">Address:</label>
-                          <div>
-                            <textarea id="address" name="address" type="text" ng-model="myLocation.address" placeholder="No Data Loaded" class="form-control input-md"/>
-                            <span class="help-block"></span>
-                          </div>
-                      </div>
-                      <div>
-                          <label class="control-label" for="size">Size:</label>
-                          <div>
-                              <select name="size" id="size" ng-model="myLocation.size" class="form-control input-md" placeholder="No Data Loaded">
-                                <option>small</option>
-                                <option>medium</option>
-                                <option>large</option>
-                              </select>
-                            <span class="help-block"></span>
-                          </div>
-                      </div>
-                      <div>
-                          <label class="control-label" for="color">Color:</label>
-                          <div>
-                            <select name="color" id="color" ng-model="myLocation.color" class="form-control input-md" placeholder="No Data Loaded">
-                                <option>yellow</option>
-                                <option>red</option>
-                                <option>orange</option>
-                                <option>green</option>
-                                <option>blue</option>
-                                <option>gray</option>
-                                <option>black</option>
-                                <option>white</option>
-                              </select>
-                            <span class="help-block"></span>
-                          </div>
-                      </div>          
-                  </div><!-- /.modal-body -->
-                  <div class="modal-footer">
-                    <button ng-click="AddMyPoint()" name="saveLocation" id="saveLocation" class="btn btn-primary btn-lg">Save</button>
                   </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
+                  <div>
+                      <label class="control-label" for="comment">Comment:</label>
+                      <div>
+                        <textarea id="comment" name="comment" type="text" ng-model="myLocation.comment" placeholder="No Data Loaded" class="form-control input-md"/>
+                        <span class="help-block"></span>
+                      </div>
+                  </div>
+                  <div>
+                      <label class="control-label" for="address">Address:</label>
+                      <div>
+                        <textarea id="address" name="address" type="text" ng-model="myLocation.address" placeholder="No Data Loaded" class="form-control input-md"/>
+                        <span class="help-block"></span>
+                      </div>
+                  </div>
+                  <div>
+                      <label class="control-label" for="size">Size:</label>
+                      <div>
+                          <select name="size" id="size" ng-model="myLocation.size" class="form-control input-md" placeholder="No Data Loaded">
+                            <option>small</option>
+                            <option>medium</option>
+                            <option>large</option>
+                          </select>
+                        <span class="help-block"></span>
+                      </div>
+                  </div>
+                  <div>
+                      <label class="control-label" for="color">Color:</label>
+                      <div>
+                        <select name="color" id="color" ng-model="myLocation.color" class="form-control input-md" placeholder="No Data Loaded">
+                            <option>yellow</option>
+                            <option>red</option>
+                            <option>orange</option>
+                            <option>green</option>
+                            <option>blue</option>
+                            <option>gray</option>
+                            <option>black</option>
+                            <option>white</option>
+                          </select>
+                        <span class="help-block"></span>
+                      </div>
+                  </div>
+              </div><!-- /.modal-body -->
+              <div class="modal-footer">
+                <button ng-click="AddMyPoint()" name="saveLocation" id="saveLocation" class="btn btn-primary btn-lg">Save</button>
+              </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="Share Modal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Example Data Set</h4>
+        </div>
+        <div class="modal-body">
+          <p><div class="fb-like" data-href="javascript:location.href;" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+          <a class="twitter-share-button" href="https://twitter.com/share">Tweet</a>
+          <script type="text/javascript">
+          window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+          </script>
+          </p>
+          <p>Description</p>
+          <p>Embed Code</p>
+          <div class="well well-lg">Embed Code:<pre><code>&lt;iframe class="embed-responsive-item" src="embed.html#/map/{{route.mapId}}" alt="{{route.description}}" scrolling="no" seamless&gt;&lt;/iframe&gt;</code></pre></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
 </div>

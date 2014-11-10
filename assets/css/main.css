@@ -656,12 +656,14 @@ a:after {
   height: 550px;
 }
 
+/*
 #addLocation {
   position:absolute;
   top:31px;
   left:25px;
   z-index:100
 }
+*/
 
 #map.embed{
   height: 100%;
