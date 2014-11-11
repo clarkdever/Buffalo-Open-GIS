@@ -58,7 +58,7 @@ angular.module('bogisApp')
             $scope.thisMap.$destroy();
           }
           fbutil.syncObject( "users/" + user.uid + "/maps/" + $scope.route.mapId).$bindTo($scope, 'thisMap').then(function() {
-              var nick = nick;
+              var nick = nick; //I'm afraid to delete this because it looks like it's magic.
 
           })
         }
