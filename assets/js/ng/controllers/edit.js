@@ -69,7 +69,7 @@ angular.module('bogisApp')
       $scope.saveTable = function () {
            angular.forEach($scope.data, function(dataElement) {
              if (typeof(dataElement.address) !== "undefined"){
-              if (typeof(dataElement.lat) == "undefined" || typeof(dataElement.lng) == "undefined") {
+              if ((typeof(dataElement.lat) == "undefined" || typeof(dataElement.lng) == "undefined") || (dataElement.lat == "" || dataElement.lng == "")) {
                 geocoder.query(dataElement.address, function (err, data) {
                       dataElement.lat = data.latlng[0];
                       dataElement.lng = data.latlng[1];
