@@ -56,10 +56,10 @@
             <ul class="nav navbar-nav">
               <li><a href="#/#home" class="smoothScroll">Home</a></li>
         			<li> <a href="#/#about" class="smoothScroll"> About</a></li>
-        			<li> <a ng-show-auth="" class="dropdown-toggle ng-cloak" data-toggle="dropdown"> Maps<span class="caret"></span></a>
+        			<li> <a class="dropdown-toggle ng-cloak" data-toggle="dropdown"> Maps<span class="caret"></span></a>
                         <ul class="dropdown-menu" ng-controller="UrlGenerator" role="menu">
-                          <li><a ng-click="getURL()">Create Map</a></li>
-                          <li><a href="#/account">Your Maps</a></li>
+                          <li ng-show-auth=""><a ng-click="getURL()">Create Map</a></li>
+                          <li ng-show-auth=""><a href="#/account">Your Maps</a></li>
                           <li><a href="#/#maps">Most Popular</a></li>
                           <li><a href="#/allmaps">All</a></li>
                         </ul>
