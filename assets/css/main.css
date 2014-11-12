@@ -685,7 +685,7 @@ a:after {
 */
 
 #map.embed{
-  height: 100%;
+  height: 300px;
 }
 
 /*map css*/
